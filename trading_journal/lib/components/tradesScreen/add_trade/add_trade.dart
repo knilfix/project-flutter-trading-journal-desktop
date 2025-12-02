@@ -45,7 +45,6 @@ class _AddTradeScreenState extends State<AddTradeScreen> {
   double _lastRiskPercentage = 1.0; // Default risk percentage of 1%
   double _lastFees = 0.0;
   File? _screenshotFile;
-  String? _screenshotPath;
 
   @override
   void initState() {
@@ -101,16 +100,17 @@ class _AddTradeScreenState extends State<AddTradeScreen> {
       }
     } catch (e) {
       debugPrint('Error picking file: $e');
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Failed to pick image: ${e.toString()}')),
-      );
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Failed to pick image: ${e.toString()}')),
+        );
+      }
     }
   }
 
   Future<void> _removeScreenshot() async {
     setState(() {
       _screenshotFile = null;
-      _screenshotPath = null;
     });
   }
 
