@@ -280,7 +280,7 @@ class TradeDetailsPage extends StatelessWidget {
 
   Widget _buildSummaryCard(BuildContext context, Trade trade, bool isProfit) {
     final theme = Theme.of(context);
-    final colorScheme = theme.colorScheme;
+
     final directionColor = trade.direction == TradeDirection.buy
         ? Colors.green[400]
         : Colors.red[400];
